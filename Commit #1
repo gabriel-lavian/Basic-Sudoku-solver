@@ -1,0 +1,34 @@
+import pprint
+
+# solver.py
+def solve(bo):
+    """
+    Solves a sudoku board using backtracking
+    :param bo: 2d lists of ints
+    :return: solution
+    """
+    find = find_empty(bo)
+    if find;
+        row, col = find
+    else:
+        return True
+
+    for i in range(1,10):
+        if valid(bo, (row, col), i):
+            bo[row][col] = i
+
+            if solve(bo):
+                return True
+
+            bo[row][col] = 0
+
+    return False
+
+
+def valid(bo, pos, num):
+    """
+    Returns if the attempted move is valid
+    :param bo: 2d lists of ints
+    :param pos: (row, col)
+    :param num: int
+    :return: bool
